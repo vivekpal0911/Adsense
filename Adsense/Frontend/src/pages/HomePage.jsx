@@ -72,45 +72,69 @@ const HomePage = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <Box bgGradient={bgGradient} color="white" py={20} px={4}>
+      <Box bgGradient={bgGradient} color="white" py={{ base: 8, sm: 12, md: 20 }} px={{ base: 3, sm: 4 }}>
         <Container maxW="6xl">
-          <Flex direction={{ base: 'column', md: 'row' }} align="center">
-            <Box flex={1} mb={{ base: 8, md: 0 }}>
-              <Heading as="h1" size="2xl" mb={4} lineHeight="1.2">
+          <Flex direction={{ base: 'column', md: 'row' }} align="center" gap={{ base: 6, sm: 8, md: 0 }}>
+            <Box flex={1} mb={{ base: 6, sm: 8, md: 0 }} textAlign={{ base: 'center', md: 'left' }}>
+              <Heading 
+                as="h1" 
+                size={{ base: 'xl', sm: '2xl', md: '3xl' }} 
+                mb={{ base: 3, sm: 4 }} 
+                lineHeight="1.2"
+                fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}
+                letterSpacing={{ base: '-0.5px', md: '-1px' }}
+              >
                 Connect Brands with <br />Authentic Influencers
               </Heading>
-              <Text fontSize="xl" mb={8}>
+              <Text 
+                fontSize={{ base: 'md', sm: 'lg', md: 'xl' }} 
+                mb={{ base: 6, sm: 8 }}
+                opacity={0.9}
+                lineHeight="1.6"
+              >
                 The leading platform for influencer marketing campaigns with verified audience data
               </Text>
-              <Stack direction={{ base: 'column', sm: 'row' }} spacing={4}>
+              <Stack 
+                direction={{ base: 'column', sm: 'row' }} 
+                spacing={{ base: 3, sm: 4 }} 
+                justify={{ base: 'center', md: 'flex-start' }}
+                width={{ base: 'full', sm: 'auto' }}
+              >
                 <Button
                   as={RouterLink}
                   to="/signup"
-                  size="lg"
+                  size={{ base: 'md', sm: 'lg' }}
                   colorScheme="whiteAlpha"
                   rightIcon={<FaArrowRight />}
+                  width={{ base: 'full', sm: 'auto' }}
+                  height={{ base: '48px', sm: '56px' }}
+                  fontSize={{ base: 'md', sm: 'lg' }}
                 >
                   Sign Up
                 </Button>
                 <Button
                   as={RouterLink}
                   to="/login"
-                  size="lg"
+                  size={{ base: 'md', sm: 'lg' }}
                   variant="outline"
                   color="white"
                   _hover={{ bg: 'whiteAlpha.200' }}
                   rightIcon={<FaArrowRight />}
+                  width={{ base: 'full', sm: 'auto' }}
+                  height={{ base: '48px', sm: '56px' }}
+                  fontSize={{ base: 'md', sm: 'lg' }}
                 >
                   Login
                 </Button>
               </Stack>
             </Box>
-            <Box flex={1} display="flex" justifyContent="center">
+            <Box flex={1} display="flex" justifyContent="center" mt={{ base: 4, sm: 6, md: 0 }}>
               <Image
                 src="https://illustrations.popsy.co/amber/digital-nomad.svg"
                 alt="Influencer marketing illustration"
-                maxW="500px"
+                maxW={{ base: '280px', sm: '350px', md: '500px' }}
                 w="100%"
+                transform={{ base: 'scale(0.9)', sm: 'scale(1)' }}
               />
             </Box>
           </Flex>
@@ -118,15 +142,28 @@ const HomePage = () => {
       </Box>
 
       {/* Stats Section */}
-      <Box py={16} bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Box py={{ base: 10, sm: 12, md: 16 }} bg={useColorModeValue('gray.50', 'gray.800')}>
         <Container maxW="6xl">
-          <SimpleGrid columns={{ base: 2, md: 4 }} spacing={10}>
+          <SimpleGrid 
+            columns={{ base: 2, md: 4 }} 
+            spacing={{ base: 8, sm: 10, md: 12 }}
+            px={{ base: 2, sm: 4 }}
+          >
             {stats.map((stat) => (
               <Box key={stat.label} textAlign="center">
-                <Text fontSize="4xl" fontWeight="bold" mb={2}>
+                <Text 
+                  fontSize={{ base: 'xl', sm: '2xl', md: '4xl' }} 
+                  fontWeight="bold" 
+                  mb={{ base: 1, sm: 2 }}
+                  color={useColorModeValue('gray.800', 'white')}
+                >
                   {stat.value}
                 </Text>
-                <Text color={useColorModeValue('gray.600', 'gray.400')}>
+                <Text 
+                  fontSize={{ base: 'xs', sm: 'sm', md: 'md' }} 
+                  color={useColorModeValue('gray.600', 'gray.400')}
+                  lineHeight="1.4"
+                >
                   {stat.label}
                 </Text>
               </Box>
@@ -136,16 +173,26 @@ const HomePage = () => {
       </Box>
 
       {/* Features Section */}
-      <Box py={16}>
+      <Box py={{ base: 10, sm: 12, md: 16 }}>
         <Container maxW="6xl">
-          <Heading as="h2" size="xl" textAlign="center" mb={12}>
+          <Heading 
+            as="h2" 
+            size={{ base: 'lg', sm: 'xl', md: '2xl' }} 
+            textAlign="center" 
+            mb={{ base: 8, sm: 10, md: 12 }}
+            color={useColorModeValue('gray.800', 'white')}
+          >
             Why Choose Our Platform
           </Heading>
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+          <SimpleGrid 
+            columns={{ base: 1, md: 3 }} 
+            spacing={{ base: 6, sm: 8, md: 10 }}
+            px={{ base: 2, sm: 4 }}
+          >
             {features.map((feature, index) => (
               <Box
                 key={index}
-                p={6}
+                p={{ base: 5, sm: 6, md: 8 }}
                 boxShadow="lg"
                 borderRadius="lg"
                 as={RouterLink}
@@ -156,15 +203,36 @@ const HomePage = () => {
                     ? '/performance-analytics'
                     : '/secure-payments'
                 }
-                _hover={{ boxShadow: 'xl', transform: 'translateY(-4px)', textDecoration: 'none' }}
+                _hover={{ 
+                  boxShadow: 'xl', 
+                  transform: 'translateY(-4px)', 
+                  textDecoration: 'none',
+                  bg: useColorModeValue('gray.50', 'gray.700')
+                }}
                 transition="all 0.2s"
                 cursor="pointer"
+                bg={useColorModeValue('white', 'gray.800')}
               >
-                <Icon as={feature.icon} w={10} h={10} color="red.400" mb={4} />
-                <Heading as="h3" size="md" mb={3}>
+                <Icon 
+                  as={feature.icon} 
+                  w={{ base: 8, sm: 10, md: 12 }} 
+                  h={{ base: 8, sm: 10, md: 12 }} 
+                  color="red.400" 
+                  mb={{ base: 4, sm: 5 }} 
+                />
+                <Heading 
+                  as="h3" 
+                  size={{ base: 'md', sm: 'lg' }} 
+                  mb={{ base: 2, sm: 3 }}
+                  color={useColorModeValue('gray.800', 'white')}
+                >
                   {feature.title}
                 </Heading>
-                <Text color={useColorModeValue('gray.600', 'gray.400')}>
+                <Text 
+                  fontSize={{ base: 'sm', sm: 'md' }} 
+                  color={useColorModeValue('gray.600', 'gray.400')}
+                  lineHeight="1.6"
+                >
                   {feature.text}
                 </Text>
               </Box>
@@ -174,12 +242,22 @@ const HomePage = () => {
       </Box>
 
       {/* How It Works Section */}
-      <Box py={16} bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Box py={{ base: 10, sm: 12, md: 16 }} bg={useColorModeValue('gray.50', 'gray.800')}>
         <Container maxW="6xl">
-          <Heading as="h2" size="xl" textAlign="center" mb={12}>
+          <Heading 
+            as="h2" 
+            size={{ base: 'lg', sm: 'xl', md: '2xl' }} 
+            textAlign="center" 
+            mb={{ base: 8, sm: 10, md: 12 }}
+            color={useColorModeValue('gray.800', 'white')}
+          >
             How It Works
           </Heading>
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+          <SimpleGrid 
+            columns={{ base: 1, md: 3 }} 
+            spacing={{ base: 8, sm: 10, md: 12 }}
+            px={{ base: 2, sm: 4 }}
+          >
             {[
               {
                 step: '1',
@@ -197,21 +275,37 @@ const HomePage = () => {
                 description: 'Manage everything from brief to payment in one dashboard',
               },
             ].map((item) => (
-              <Box key={item.step} textAlign="center">
+              <Box 
+                key={item.step} 
+                textAlign="center"
+                p={{ base: 4, sm: 6 }}
+                bg={useColorModeValue('white', 'gray.700')}
+                borderRadius="lg"
+                boxShadow="md"
+              >
                 <Badge
-                  fontSize="xl"
-                  p={2}
+                  fontSize={{ base: 'lg', sm: 'xl' }}
+                  p={{ base: 2, sm: 3 }}
                   borderRadius="full"
                   bgGradient={bgGradient}
                   color="white"
-                  mb={4}
+                  mb={{ base: 4, sm: 5 }}
                 >
                   {item.step}
                 </Badge>
-                <Heading as="h3" size="md" mb={2}>
+                <Heading 
+                  as="h3" 
+                  size={{ base: 'md', sm: 'lg' }} 
+                  mb={{ base: 2, sm: 3 }}
+                  color={useColorModeValue('gray.800', 'white')}
+                >
                   {item.title}
                 </Heading>
-                <Text color={useColorModeValue('gray.600', 'gray.400')}>
+                <Text 
+                  fontSize={{ base: 'sm', sm: 'md' }} 
+                  color={useColorModeValue('gray.600', 'gray.400')}
+                  lineHeight="1.6"
+                >
                   {item.description}
                 </Text>
               </Box>
@@ -221,19 +315,31 @@ const HomePage = () => {
       </Box>
 
       {/* Testimonials Section */}
-      <Box py={16}>
+      <Box py={{ base: 10, sm: 12, md: 16 }}>
         <Container maxW="6xl">
-          <Heading as="h2" size="xl" textAlign="center" mb={12}>
+          <Heading 
+            as="h2" 
+            size={{ base: 'lg', sm: 'xl', md: '2xl' }} 
+            textAlign="center" 
+            mb={{ base: 8, sm: 10, md: 12 }}
+            color={useColorModeValue('gray.800', 'white')}
+          >
             What Our Users Say
           </Heading>
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+          <SimpleGrid 
+            columns={{ base: 1, md: 2 }} 
+            spacing={{ base: 6, sm: 8, md: 10 }}
+            px={{ base: 2, sm: 4 }}
+          >
             {testimonials.map((testimonial, index) => (
               <Box
                 key={index}
-                p={6}
+                p={{ base: 5, sm: 6, md: 8 }}
                 borderWidth="1px"
                 borderRadius="lg"
                 position="relative"
+                bg={useColorModeValue('white', 'gray.800')}
+                boxShadow="md"
               >
                 <Box
                   position="absolute"
@@ -244,22 +350,42 @@ const HomePage = () => {
                   borderRadius="full"
                   boxShadow="md"
                 >
-                  <Icon as={MdVerified} w={6} h={6} color="red.400" />
+                  <Icon 
+                    as={MdVerified} 
+                    w={{ base: 5, sm: 6 }} 
+                    h={{ base: 5, sm: 6 }} 
+                    color="red.400" 
+                  />
                 </Box>
-                <Text mb={4} fontStyle="italic">
+                <Text 
+                  mb={{ base: 4, sm: 5 }} 
+                  fontStyle="italic" 
+                  fontSize={{ base: 'sm', sm: 'md' }}
+                  color={useColorModeValue('gray.700', 'gray.300')}
+                  lineHeight="1.6"
+                >
                   "{testimonial.content}"
                 </Text>
                 <Flex align="center">
                   <Image
                     src={testimonial.avatar}
                     alt={testimonial.name}
+                    boxSize={{ base: '40px', sm: '50px' }}
                     borderRadius="full"
-                    boxSize="50px"
-                    mr={4}
+                    mr={3}
                   />
                   <Box>
-                    <Text fontWeight="bold">{testimonial.name}</Text>
-                    <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
+                    <Text 
+                      fontWeight="bold" 
+                      fontSize={{ base: 'sm', sm: 'md' }}
+                      color={useColorModeValue('gray.800', 'white')}
+                    >
+                      {testimonial.name}
+                    </Text>
+                    <Text 
+                      fontSize={{ base: 'xs', sm: 'sm' }} 
+                      color={useColorModeValue('gray.600', 'gray.400')}
+                    >
                       {testimonial.role}
                     </Text>
                   </Box>
@@ -271,29 +397,50 @@ const HomePage = () => {
       </Box>
 
       {/* CTA Section */}
-      <Box py={16} bgGradient={bgGradient} color="white">
-        <Container maxW="2xl" textAlign="center">
-          <Heading as="h2" size="xl" mb={6}>
+      <Box py={{ base: 12, sm: 16, md: 20 }} bgGradient={bgGradient} color="white">
+        <Container maxW="2xl" textAlign="center" px={{ base: 4, sm: 6 }}>
+          <Heading 
+            as="h2" 
+            size={{ base: 'xl', sm: '2xl' }} 
+            mb={{ base: 4, sm: 6 }}
+            lineHeight="1.2"
+          >
             Ready to Grow Your Brand?
           </Heading>
-          <Text fontSize="xl" mb={8}>
+          <Text 
+            fontSize={{ base: 'lg', sm: 'xl' }} 
+            mb={{ base: 6, sm: 8 }}
+            opacity={0.9}
+            lineHeight="1.6"
+          >
             Join thousands of brands and creators already collaborating on our platform
           </Text>
-          <Stack direction={{ base: 'column', sm: 'row' }} justify="center" spacing={4}>
+          <Stack 
+            direction={{ base: 'column', sm: 'row' }} 
+            justify="center" 
+            spacing={{ base: 4, sm: 6 }}
+            width={{ base: 'full', sm: 'auto' }}
+          >
             <Button
               as={RouterLink}
               to="/signup"
-              size="lg"
+              size={{ base: 'lg', sm: 'xl' }}
               colorScheme="whiteAlpha"
               rightIcon={<FaArrowRight />}
+              width={{ base: 'full', sm: 'auto' }}
+              height={{ base: '48px', sm: '56px' }}
+              fontSize={{ base: 'md', sm: 'lg' }}
             >
               Sign Up
             </Button>
             <Button
-              size="lg"
+              size={{ base: 'lg', sm: 'xl' }}
               variant="outline"
               color="white"
               _hover={{ bg: 'whiteAlpha.200' }}
+              width={{ base: 'full', sm: 'auto' }}
+              height={{ base: '48px', sm: '56px' }}
+              fontSize={{ base: 'md', sm: 'lg' }}
             >
               See How It Works
             </Button>

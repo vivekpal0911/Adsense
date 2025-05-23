@@ -21,6 +21,7 @@ import {
   MenuItem,
   Badge,
   Spinner,
+  Divider,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -91,14 +92,21 @@ export default function Navbar() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
             fontWeight="bold"
-            fontSize="xl"
+            fontSize={{ base: 'lg', md: 'xl' }}
             as={RouterLink}
             to="/"
             display="flex"
             alignItems="center"
             gap={2}
           >
-            <img src={logo} alt="Adsense Logo" style={{ height: '52px', marginRight: '8px' }} />
+            <img 
+              src={logo} 
+              alt="Adsense Logo" 
+              style={{ 
+                height: useBreakpointValue({ base: '40px', md: '52px' }), 
+                marginRight: '8px' 
+              }} 
+            />
             AdSense
           </Text>
 
@@ -111,25 +119,41 @@ export default function Navbar() {
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
           direction={'row'}
-          spacing={6}>
+          spacing={{ base: 2, md: 6 }}>
           <Menu>
-            <MenuButton as={IconButton} icon={<BellIcon />} variant="ghost" position="relative">
+            <MenuButton 
+              as={IconButton} 
+              icon={<BellIcon />} 
+              variant="ghost" 
+              position="relative"
+              size={{ base: 'sm', md: 'md' }}
+            >
               {notifications.length > 0 && (
-                <Badge colorScheme="red" borderRadius="full" position="absolute" top={1} right={1} fontSize="0.7em">
+                <Badge 
+                  colorScheme="red" 
+                  borderRadius="full" 
+                  position="absolute" 
+                  top={1} 
+                  right={1} 
+                  fontSize="0.7em"
+                >
                   {notifications.length}
                 </Badge>
               )}
             </MenuButton>
-            <MenuList minW="300px">
-              <Box px={3} py={2} fontWeight="bold">Notifications</Box>
+            <MenuList minW={{ base: '280px', md: '300px' }} maxH="400px" overflowY="auto">
+              <Box px={3} py={2} fontWeight="bold" fontSize={{ base: 'sm', md: 'md' }}>Notifications</Box>
+              <Divider />
               {loadingNotif ? (
                 <Box px={3} py={2}><Spinner size="sm" /></Box>
               ) : notifications.length === 0 ? (
-                <MenuItem>No notifications</MenuItem>
+                <MenuItem fontSize={{ base: 'sm', md: 'md' }}>No notifications</MenuItem>
               ) : notifications.slice(0, 8).map((notif, idx) => (
-                <MenuItem key={idx}>
+                <MenuItem key={idx} fontSize={{ base: 'sm', md: 'md' }}>
                   {notif.message}
-                  <Box ml="auto" fontSize="xs" color="gray.400">{notif.createdAt ? new Date(notif.createdAt).toLocaleString() : ''}</Box>
+                  <Box ml="auto" fontSize="xs" color="gray.400">
+                    {notif.createdAt ? new Date(notif.createdAt).toLocaleString() : ''}
+                  </Box>
                 </MenuItem>
               ))}
             </MenuList>
@@ -137,20 +161,20 @@ export default function Navbar() {
           <Button
             as={RouterLink}
             to="/login"
-            fontSize={'sm'}
+            fontSize={{ base: 'xs', md: 'sm' }}
             fontWeight={400}
-            variant={'link'}>
-            Login In
+            variant={'link'}
+            display={{ base: 'none', sm: 'inline-flex' }}>
+            Login
           </Button>
           <Button
             as={RouterLink}
             to="/signup"
             display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
+            fontSize={{ base: 'xs', md: 'sm' }}
             fontWeight={600}
             color={'white'}
             bg={'red.400'}
-            href={'#'}
             _hover={{
               bg: 'red.300',
             }}>
@@ -258,6 +282,30 @@ const MobileNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <Stack direction={'row'} spacing={4} mt={4}>
+        <Button
+          as={RouterLink}
+          to="/login"
+          fontSize={'sm'}
+          fontWeight={400}
+          variant={'link'}
+          width="full">
+          Login
+        </Button>
+        <Button
+          as={RouterLink}
+          to="/signup"
+          fontSize={'sm'}
+          fontWeight={600}
+          color={'white'}
+          bg={'red.400'}
+          width="full"
+          _hover={{
+            bg: 'red.300',
+          }}>
+          Sign Up
+        </Button>
+      </Stack>
     </Stack>
   );
 };
@@ -278,7 +326,8 @@ const MobileNavItem = ({ label, children, href }) => {
         }}>
         <Text
           fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}>
+          color={useColorModeValue('gray.600', 'gray.200')}
+          fontSize={{ base: 'sm', md: 'md' }}>
           {label}
         </Text>
         {children && (
@@ -313,10 +362,6 @@ const MobileNavItem = ({ label, children, href }) => {
 };
 
 const NAV_ITEMS = [
-  {
-    label: 'Home',
-    href: '/',
-  },
   {
     label: 'Features',
     href: '/features',
