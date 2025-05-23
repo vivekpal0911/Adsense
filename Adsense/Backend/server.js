@@ -23,7 +23,10 @@ if (!process.env.JWT_SECRET) {
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    'https://adsense-1.onrender.com'
+  ],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express.json());
