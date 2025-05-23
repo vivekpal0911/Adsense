@@ -54,6 +54,9 @@ const connectWithRetry = async (retries = 5, delay = 5000) => {
 connectWithRetry();
 
 // Mount Routes
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
 app.use('/api/users', authRoutes);
 app.use('/api/ads', adRoutes);
 app.use('/api/messages', messageRoutes);
