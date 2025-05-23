@@ -32,7 +32,7 @@ export default function CreateAd() {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5001/api/ads',
+        'https://adsense-21ou.onrender.com/api/ads',
         { title, description, budget, category },
         {
           headers: {

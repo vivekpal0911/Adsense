@@ -79,7 +79,7 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem('token');
     if (token) {
       axios
-        .get('http://localhost:5001/api/users/profile', {
+        .get('https://adsense-21ou.onrender.com/api/users/profile', {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -99,7 +99,7 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post('http://localhost:5001/api/users/login', { email, password });
+      const res = await axios.post('https://adsense-21ou.onrender.com/api/users/login', { email, password });
       localStorage.setItem('token', res.data.token);
       setUser(res.data.user);
       return res.data.user;
@@ -110,7 +110,7 @@ export function AuthProvider({ children }) {
 
   const signup = async (userData) => {
     try {
-      const res = await axios.post('http://localhost:5001/api/users/signup', userData);
+      const res = await axios.post('https://adsense-21ou.onrender.com/api/users/signup', userData);
       localStorage.setItem('token', res.data.token);
       setUser(res.data.user);
       return res.data.user;

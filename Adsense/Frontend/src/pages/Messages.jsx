@@ -26,7 +26,7 @@ const Messages = () => {
       setLoadingConvos(true);
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5001/api/messages/conversations', {
+        const res = await axios.get('https://adsense-21ou.onrender.com/api/messages/conversations', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setConversations(res.data);
@@ -47,7 +47,7 @@ const Messages = () => {
       setLoadingMsgs(true);
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`http://localhost:5001/api/messages/${selectedUser._id}`, {
+        const res = await axios.get(`https://adsense-21ou.onrender.com/api/messages/${selectedUser._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMessages(res.data);
@@ -69,7 +69,7 @@ const Messages = () => {
   const fetchAllUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5001/api/messages/users', {
+      const res = await axios.get('https://adsense-21ou.onrender.com/api/messages/users', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAllUsers(res.data);
@@ -83,7 +83,7 @@ const Messages = () => {
     setSending(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5001/api/messages', {
+      await axios.post('https://adsense-21ou.onrender.com/api/messages', {
         receiver: selectedUser._id,
         content: newMsg.trim(),
       }, {

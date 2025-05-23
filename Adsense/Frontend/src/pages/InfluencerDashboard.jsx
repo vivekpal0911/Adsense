@@ -60,7 +60,7 @@ export default function InfluencerDashboard() {
     const fetchAds = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5001/api/ads', {
+        const res = await axios.get('https://adsense-21ou.onrender.com/api/ads', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAds(res.data);
@@ -78,7 +78,7 @@ export default function InfluencerDashboard() {
     setActionLoading((prev) => ({ ...prev, [adId]: true }));
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5001/api/ads/${adId}/accept`, {}, {
+      await axios.post(`https://adsense-21ou.onrender.com/api/ads/${adId}/accept`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAds((prev) => prev.filter((ad) => ad._id !== adId));
@@ -107,7 +107,7 @@ export default function InfluencerDashboard() {
     setActionLoading((prev) => ({ ...prev, [adId]: true }));
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5001/api/ads/${adId}/reject`, {}, {
+      await axios.post(`https://adsense-21ou.onrender.com/api/ads/${adId}/reject`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAds((prev) => prev.filter((ad) => ad._id !== adId));

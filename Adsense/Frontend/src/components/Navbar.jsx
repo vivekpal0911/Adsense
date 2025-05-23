@@ -45,7 +45,7 @@ export default function Navbar() {
       try {
         const token = localStorage.getItem('token');
         if (!token) return;
-        const res = await axios.get('http://localhost:5001/api/users/notifications', {
+        const res = await axios.get('https://adsense-21ou.onrender.com/api/users/notifications', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setNotifications(res.data || []);

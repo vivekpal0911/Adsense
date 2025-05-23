@@ -52,7 +52,7 @@ export default function CompanyDashboard() {
     const fetchAds = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5001/api/ads/my-ads', {
+        const res = await axios.get('https://adsense-21ou.onrender.com/api/ads/my-ads', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAds(res.data);

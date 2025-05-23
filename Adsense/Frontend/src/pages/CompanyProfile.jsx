@@ -43,7 +43,7 @@ const CompanyProfile = () => {
       if (!user) return;
 
       try {
-        const res = await axios.get('http://localhost:5001/api/users/profile', {
+        const res = await axios.get('https://adsense-21ou.onrender.com/api/users/profile', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -62,7 +62,7 @@ const CompanyProfile = () => {
   const handleEditToggle = async () => {
     if (isEditing) {
       try {
-        const res = await axios.put('http://localhost:5001/api/users/profile', editedProfile, {
+        const res = await axios.put('https://adsense-21ou.onrender.com/api/users/profile', editedProfile, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

@@ -28,7 +28,7 @@ const DiscoverInfluencers = () => {
       if (filters.categories && filters.categories.length > 0) params.categories = filters.categories.join(',');
       if (filters.minFollowers !== undefined) params.minFollowers = filters.minFollowers;
       if (filters.maxFollowers !== undefined) params.maxFollowers = filters.maxFollowers;
-      const res = await axios.get('http://localhost:5001/api/users/influencers', {
+      const res = await axios.get('https://adsense-21ou.onrender.com/api/users/influencers', {
         headers: { Authorization: `Bearer ${token}` },
         params,
       });
@@ -45,7 +45,7 @@ const DiscoverInfluencers = () => {
     const getRange = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5001/api/users/influencers', {
+        const res = await axios.get('https://adsense-21ou.onrender.com/api/users/influencers', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const allFollowers = res.data.map(inf => (inf.socialMedia || []).reduce((sum, s) => sum + (s.followers || 0), 0));
